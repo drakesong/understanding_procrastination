@@ -1,8 +1,12 @@
 h1 {
-    padding: 10px;
+    padding: 100px 10px 0px 10px;
     font-family: sans-serif;
     width: 60%;
     margin: auto;
+}
+
+body {
+    margin: 0;
 }
 
 p {
@@ -24,4 +28,12 @@ p {
 #gameCanvas {
     border: 1px solid black;
     position: absolute;
+}
+
+.banner {
+    width: 100%;
+}
+
+.banner > .banner-img {
+    width: 100%;
 }

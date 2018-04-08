@@ -9,6 +9,8 @@ var key1Text;
 var key2Text;
 var revealBtn;
 var border;
+var currentTime;
+var running = false;
 
 function init() {
     canvas = document.getElementById("gameCanvas");
@@ -34,6 +36,8 @@ function initialScreen() {
 }
 
 function startGame() {
+    running = true;
+
     canvas.style.backgroundColor = "#ffffff";
 
     stage.removeAllChildren();
@@ -98,3 +102,25 @@ function reveal() {
 
     stage.update();
 }
+
+// function endGame() {
+//     currentTime = createjs.Ticker.getTime();
+//     while (Math.floor(currentTime / 1000) < 5) {
+//         currentTime = createjs.Ticker.getTime();
+//     }
+//     alert("passed 5 seconds");
+//     //
+//     // alert("passed 5 seconds");
+//     //
+//     // stage.removeChild(key1Pixelated);
+//     // stage.removeChild(key2Pixelated);
+//     // stage.removeChild(revealBtn);
+//     //
+//     // key1.setTransform(50, 225);
+//     // key2.setTransform(525, 225);
+//     //
+//     // stage.addChild(key1);
+//     // stage.addChild(key2);
+//     //
+//     // stage.update();
+// }
