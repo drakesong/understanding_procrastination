@@ -1,13 +1,15 @@
 (function() {
 
-    function Button(label, color) {
+    function Button(label, color, func) {
         this.Container_constructor();
 
         this.color = color;
         this.label = label;
+        this.func = func;
 
         this.setup();
     }
+
     var p = createjs.extend(Button, createjs.Container);
 
     p.setup = function() {
@@ -37,7 +39,7 @@
     };
 
     p.handleClick = function(event) {
-        alert("You clicked on a button: " + this.label);
+        this.func();
     };
 
     p.handleRollOver = function(event) {
