@@ -23,7 +23,7 @@ function init() {
 }
 
 function initialScreen() {
-    var messageField = new createjs.Text("Click to start\n\nNote: If your mouse leaves this box,\nyou will automatically lose the game!", "bold 24px Sans-serif", "#FFFFFF");
+    var messageField = new createjs.Text("Click to start\n\n\nNote: If your mouse leaves this box,\nyou will automatically lose the game!", "bold 24px Sans-serif", "#FFFFFF");
     messageField.maxWidth = 1000;
     messageField.textAlign = "center";
     messageField.textBaseline = "middle";
