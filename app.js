@@ -138,7 +138,7 @@ google.charts.setOnLoadCallback(drawChart2);
 function drawChart1() {
     var data = google.visualization.arrayToDataTable([
         ['Type', 'BMI', { role: 'style' }],
-        ['Non-Delayer', 27.3, 'rgb(51, 102, 204)'],
+        ['Non-Delayer', 27.5, 'rgb(51, 102, 204)'],
         ['Delayer', 24.4, 'rgb(220, 57, 18)']
     ]);
 
