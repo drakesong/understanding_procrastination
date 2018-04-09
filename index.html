@@ -2,18 +2,19 @@
 <html lang="en">
 
 <head>
-    <link href="style.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
     <script src="https://code.createjs.com/easeljs-0.8.2.min.js"></script>
     <script src="https://code.createjs.com/tweenjs-0.6.2.min.js"></script>
     <script src="https://www.gstatic.com/charts/loader.js"></script>
-    <script src="app.js"></script>
-    <script src="Button.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/Button.js"></script>
+    <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
     <title>Understanding Procrastination</title>
 </head>
 
 <body onload="init();">
     <div class="banner">
-        <img class="banner-img" src="banner.jpg">
+        <img class="banner-img" src="img/banner.jpg">
     </div>
     <h1>Introduction</h1>
     <p>
@@ -75,5 +76,45 @@
     <p>
         I'm sure this scenario is more relatable for most people. We are easily distracted when working on a task. But why? Why are we so easily distracted? This is because most of us don't have the ability to delay instant gratification. To elaborate, the task
         at hand is equivalent to staring at the marshmallow right in front of you. It's painful. And how can you take the pain away? By doing something else more enjoyable such as watching YouTube videos aka eating the marshmallow!
+    </p>
+    <h1>Non-Procrastinator vs. Procrastinator</h1>
+    <h1>Factors of Procrastination</h1>
+    <p>
+        <ul>
+            <li>
+                Personality
+                <ul>
+                    <li>Impulsiveness (+)</li>
+                    <li>Conscientiousness (-)</li>
+                    <li>Self-Esteem (-)</li>
+                    <li>Sensation-Seeking (+)</li>
+                </ul>
+            </li>
+            <li>
+                Task
+                <ul>
+                    <li>Boredom (+)</li>
+                    <li>Frustration (+)</li>
+                    <li>Structure (-)</li>
+                    <li>Delay (+)</li>
+                    <li>Personal Meaning (-)</li>
+                </ul>
+            </li>
+            <li>
+                Temptation
+                <ul>
+                    <li>Temptation (+)</li>
+                    <li>Number (+)</li>
+                </ul>
+            </li>
+        </ul>
+    </p>
+    <h1>Model</h1>
+    <p>
+        $$Procrastination = {(Im + In)(Ss + \frac{B+F}{C+P}) \cdot D \cdot N) \over St \cdot E \cdot (C + \frac{P}{Im})}.$$
+    </p>
+    <h1>Interactions</h1>
+    <p>
+        Here the interactions will include sliders which the user can adjust to see the impact of a personality trait or the differing tasks on procrastination. The last interaction will be a sandbox where the user can play with all the factors.
     </p>
 </body>
