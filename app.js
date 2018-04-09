@@ -15,7 +15,7 @@ var running = false;
 function init() {
     canvas = document.getElementById("gameCanvas");
     stage = new createjs.Stage(canvas);
-	stage.enableMouseOver(50);
+    stage.enableMouseOver(50);
 
     initialScreen();
 
@@ -76,9 +76,15 @@ function startGame() {
     stage.addChild(border);
     stage.addChild(revealBtn);
 
-    createjs.Tween.get(img, {loop: true})
-        .to({x: 400}, 1000, createjs.Ease.getPowInOut(3))
-        .to({x: 200}, 1000, createjs.Ease.getPowInOut(3));
+    createjs.Tween.get(img, {
+            loop: true
+        })
+        .to({
+            x: 400
+        }, 1000, createjs.Ease.getPowInOut(3))
+        .to({
+            x: 200
+        }, 1000, createjs.Ease.getPowInOut(3));
     createjs.Ticker.setFPS(60);
     createjs.Ticker.addEventListener("tick", stage);
 
@@ -124,3 +130,57 @@ function reveal() {
 //     //
 //     // stage.update();
 // }
+
+google.charts.load('current', { packages: ['corechart'] });
+google.charts.setOnLoadCallback(drawChart1);
+google.charts.setOnLoadCallback(drawChart2);
+
+function drawChart1() {
+    var data = google.visualization.arrayToDataTable([
+        ['Type', 'BMI', { role: 'style' }],
+        ['Non-Delayer', 27.3, 'rgb(51, 102, 204)'],
+        ['Delayer', 24.4, 'rgb(220, 57, 18)']
+    ]);
+
+    var options = {
+        title: 'Mean Body Mass Index (BMI) between Non-Delayers and Delayers',
+        bar: { groupWidth: "95%" },
+        legend: { position: "none" },
+        vAxis: {
+            viewWindow: {
+                min: 0,
+                max: 35
+            }
+        },
+        width: 600,
+        height: 400
+    };
+
+    var chart = new google.visualization.ColumnChart(document.getElementById('chart_div1'));
+    chart.draw(data, options);
+}
+
+function drawChart2() {
+    var data = google.visualization.arrayToDataTable([
+        ['SAT Test', 'Non-Delayer', 'Delayer'],
+        ['Verbal', 524, 610],
+        ['Math', 528, 652]
+    ]);
+
+    var options = {
+        title: 'Mean SAT Scores between Non-Delayers and Delayers',
+        bar: { groupWidth: "95%" },
+        legend: { position: "none" },
+        vAxis: {
+            viewWindow: {
+                min: 0,
+                max: 900
+            }
+        },
+        width: 600,
+        height: 400
+    };
+
+    var chart = new google.visualization.ColumnChart(document.getElementById('chart_div2'));
+    chart.draw(data, options);
+}

@@ -37,3 +37,11 @@ p {
 .banner > .banner-img {
     width: 100%;
 }
+
+#chart_parent {
+    text-align: center;
+}
+
+#chart_div1, #chart_div2 {
+    display: inline-block;
+}
