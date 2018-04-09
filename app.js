@@ -1,5 +1,9 @@
 var canvas;
 var stage;
+var canvasNonPro;
+var stageNonPro;
+var canvasPro;
+var stagePro;
 
 var key1;
 var key2;
@@ -10,7 +14,19 @@ var key2Text;
 var revealBtn;
 var border;
 var currentTime;
-var running = false;
+// var running = false;
+
+var circle = new createjs.Graphics();
+circle.setStrokeStyle(1);
+circle.beginStroke(createjs.Graphics.getRGB(255, 0, 0));
+circle.beginFill(createjs.Graphics.getRGB(255, 0, 0));
+circle.drawCircle(0, 0, 40);
+
+var rect = new createjs.Graphics();
+rect.setStrokeStyle(1);
+rect.beginStroke(createjs.Graphics.getRGB(0, 0, 255));
+rect.beginFill(createjs.Graphics.getRGB(0, 0, 255));
+rect.drawRect(0, 0, 40, 60);
 
 function init() {
     canvas = document.getElementById("gameCanvas");
@@ -20,6 +36,16 @@ function init() {
     initialScreen();
 
     canvas.onclick = startGame;
+
+    canvasNonPro = document.getElementById("nonProCanvas");
+    stageNonPro = new createjs.Stage(canvasNonPro);
+
+    nonPro();
+
+    canvasPro = document.getElementById("proCanvas");
+    stagePro = new createjs.Stage(canvasPro);
+
+    pro();
 }
 
 function initialScreen() {
@@ -36,7 +62,7 @@ function initialScreen() {
 }
 
 function startGame() {
-    running = true;
+    // running = true;
 
     canvas.style.backgroundColor = "#ffffff";
 
@@ -76,15 +102,9 @@ function startGame() {
     stage.addChild(border);
     stage.addChild(revealBtn);
 
-    createjs.Tween.get(img, {
-            loop: true
-        })
-        .to({
-            x: 400
-        }, 1000, createjs.Ease.getPowInOut(3))
-        .to({
-            x: 200
-        }, 1000, createjs.Ease.getPowInOut(3));
+    createjs.Tween.get(img, { loop: true })
+        .to({ x: 400 }, 1000, createjs.Ease.getPowInOut(3))
+        .to({ x: 200 }, 1000, createjs.Ease.getPowInOut(3));
     createjs.Ticker.setFPS(60);
     createjs.Ticker.addEventListener("tick", stage);
 
@@ -183,4 +203,92 @@ function drawChart2() {
 
     var chart = new google.visualization.ColumnChart(document.getElementById('chart_div2'));
     chart.draw(data, options);
+}
+
+function nonPro() {
+    var worker = new createjs.Shape(circle);
+    var work = new createjs.Shape(rect);
+
+    worker.x = canvasNonPro.width / 2;
+    worker.y = canvasNonPro.height / 2;
+
+    work.x = 117;
+    work.y = canvasNonPro.height / 2 - 30;
+
+    stageNonPro.addChild(worker);
+    stageNonPro.addChild(work);
+
+    createjs.Tween.get(worker, { loop: true })
+        .to({ x: 200 }, 1000, createjs.Ease.getPowInOut(3))
+        .to({ x: 600 }, 1000, createjs.Ease.getPowInOut(3))
+        .to({ x: 400 }, 1000, createjs.Ease.getPowInOut(3));
+    createjs.Tween.get(work, { loop: true })
+        .to({ x: 117 }, 1000, createjs.Ease.getPowInOut(3))
+        .to({ x: 640 }, 1000, createjs.Ease.getPowInOut(3))
+        .to({ x: 640 }, 1000, createjs.Ease.getPowInOut(3));
+    createjs.Ticker.setFPS(60);
+    createjs.Ticker.addEventListener("tick", stageNonPro);
+
+    stageNonPro.update();
+}
+
+function pro() {
+    var worker = new createjs.Shape(circle);
+    var work = new createjs.Shape(rect);
+
+    worker.x = canvasPro.width / 2;
+    worker.y = canvasPro.height / 2;
+
+    work.x = 117;
+    work.y = canvasPro.height / 2 - 30;
+
+    stagePro.addChild(worker);
+    stagePro.addChild(work);
+
+    createjs.Tween.get(worker, { loop: true })
+        .to({ x: 200 }, 1000, createjs.Ease.getPowInOut(3))
+        .to({ x: 200 }, 1000, createjs.Ease.getPowInOut(3))
+        .to({ y: 100 }, 1000, createjs.Ease.getPowInOut(3))
+        .to({ y: 100 }, 1000, createjs.Ease.getPowInOut(3))
+        .to({ x: 400 }, 1000, createjs.Ease.getPowInOut(3))
+        .to({ x: 400 }, 1000, createjs.Ease.getPowInOut(3))
+        .to({ y: 300 }, 1000, createjs.Ease.getPowInOut(3))
+        .to({ y: 300 }, 1000, createjs.Ease.getPowInOut(3))
+        .to({ x: 200, y: 200 }, 1000, createjs.Ease.getPowInOut(3))
+        .to({ x: 250 }, 1000, createjs.Ease.getPowInOut(3))
+        .to({ x: 600, y: 50 }, 1000, createjs.Ease.getPowInOut(3))
+        .to({ x: 600, y: 50 }, 1000, createjs.Ease.getPowInOut(3))
+        .to({ x: 400, y: 200 }, 1000, createjs.Ease.getPowInOut(3))
+        .to({ x: 250 }, 1000, createjs.Ease.getPowInOut(3))
+        .to({ x: 450 }, 1000, createjs.Ease.getPowInOut(3))
+        .to({ x: 100, y:300 }, 1000, createjs.Ease.getPowInOut(3))
+        .to({ x: 100, y:300 }, 1000, createjs.Ease.getPowInOut(3))
+        .to({ x: 450, y: 200 }, 1000, createjs.Ease.getPowInOut(3))
+        .to({ x: 600 }, 1000, createjs.Ease.getPowInOut(3))
+        .to({ x: 400 }, 1000, createjs.Ease.getPowInOut(3));
+    createjs.Tween.get(work, { loop: true })
+        .to({ x: 117 }, 1000, createjs.Ease.getPowInOut(3))
+        .to({ x: 117 }, 1000, createjs.Ease.getPowInOut(3))
+        .to({ x: 117 }, 1000, createjs.Ease.getPowInOut(3))
+        .to({ x: 117 }, 1000, createjs.Ease.getPowInOut(3))
+        .to({ x: 117 }, 1000, createjs.Ease.getPowInOut(3))
+        .to({ x: 117 }, 1000, createjs.Ease.getPowInOut(3))
+        .to({ x: 117 }, 1000, createjs.Ease.getPowInOut(3))
+        .to({ x: 117 }, 1000, createjs.Ease.getPowInOut(3))
+        .to({ x: 117 }, 1000, createjs.Ease.getPowInOut(3))
+        .to({ x: 167 }, 1000, createjs.Ease.getPowInOut(3))
+        .to({ x: 167 }, 1000, createjs.Ease.getPowInOut(3))
+        .to({ x: 167 }, 1000, createjs.Ease.getPowInOut(3))
+        .to({ x: 167 }, 1000, createjs.Ease.getPowInOut(3))
+        .to({ x: 167 }, 1000, createjs.Ease.getPowInOut(3))
+        .to({ x: 367 }, 1000, createjs.Ease.getPowInOut(3))
+        .to({ x: 367 }, 1000, createjs.Ease.getPowInOut(3))
+        .to({ x: 367 }, 1000, createjs.Ease.getPowInOut(3))
+        .to({ x: 367 }, 1000, createjs.Ease.getPowInOut(3))
+        .to({ x: 640 }, 1000, createjs.Ease.getPowInOut(3))
+        .to({ x: 640 }, 1000, createjs.Ease.getPowInOut(3));
+    createjs.Ticker.setFPS(60);
+    createjs.Ticker.addEventListener("tick", stagePro);
+
+    stagePro.update();
 }
