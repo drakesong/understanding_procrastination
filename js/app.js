@@ -163,7 +163,7 @@ function drawChart1() {
     ]);
 
     var options = {
-        title: 'Mean Body Mass Index (BMI) between Non-Delayers and Delayers',
+        title: 'Mean Body Mass Index (BMI) between Non-Delayers and Delayers (lower is better)',
         bar: { groupWidth: "95%" },
         legend: { position: "none" },
         vAxis: {
@@ -188,7 +188,7 @@ function drawChart2() {
     ]);
 
     var options = {
-        title: 'Mean SAT Scores between Non-Delayers and Delayers',
+        title: 'Mean SAT Scores between Non-Delayers and Delayers (higher is better)',
         bar: { groupWidth: "95%" },
         legend: { position: "none" },
         vAxis: {
