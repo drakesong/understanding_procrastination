@@ -366,7 +366,8 @@ function frustration0(canvas, stage) {
         .to({ x: 200 }, 1000, createjs.Ease.getPowInOut(3))
         .call(changeTextTime, [timeText]);
     createjs.Tween.get(work, { loop: true })
-        .to({ x: 20 }, 1000, createjs.Ease.getPowInOut(3))
+        .wait(1000)
+        .wait(0)
         .to({ x: 340 }, 1000, createjs.Ease.getPowInOut(3))
         .to({ x: 340 }, 1000, createjs.Ease.getPowInOut(3))
         .call(incrementDone)
@@ -408,18 +409,17 @@ function frustration1(canvas, stage) {
     stage.addChild(timeClone);
     stage.addChild(doneText);
 
+    createjs.Tween.get(timeClone, { loop: true })
+        .wait(1000)
+        .call(changeTextTime, [timeClone]);
     createjs.Tween.get(worker, { loop: true })
         .to({ x: 100 }, 1000, createjs.Ease.getPowInOut(3))
-        .call(changeTextTime, [timeClone])
-        .to({ x: 100 }, 1000, createjs.Ease.getPowInOut(3))
-        .call(changeTextTime, [timeClone])
+        .wait(1000)
         .to({ x: 300 }, 1000, createjs.Ease.getPowInOut(3))
-        .call(changeTextTime, [timeClone])
-        .to({ x: 200 }, 1000, createjs.Ease.getPowInOut(3))
-        .call(changeTextTime, [timeClone]);
+        .to({ x: 200 }, 1000, createjs.Ease.getPowInOut(3));
     createjs.Tween.get(work, { loop: true })
-        .to({ x: 20 }, 1000, createjs.Ease.getPowInOut(3))
-        .to({ x: 20 }, 1000, createjs.Ease.getPowInOut(3))
+        .wait(1000)
+        .wait(1000)
         .to({ x: 340 }, 1000, createjs.Ease.getPowInOut(3))
         .to({ x: 340 }, 1000, createjs.Ease.getPowInOut(3))
         .call(incrementDone)
@@ -461,21 +461,17 @@ function frustration2(canvas, stage) {
     stage.addChild(timeClone);
     stage.addChild(doneText);
 
+    createjs.Tween.get(timeClone, { loop: true })
+        .wait(1000)
+        .call(changeTextTime, [timeClone]);
     createjs.Tween.get(worker, { loop: true })
         .to({ x: 100 }, 1000, createjs.Ease.getPowInOut(3))
-        .call(changeTextTime, [timeClone])
-        .to({ x: 100 }, 1000, createjs.Ease.getPowInOut(3))
-        .call(changeTextTime, [timeClone])
-        .to({ x: 100 }, 1000, createjs.Ease.getPowInOut(3))
-        .call(changeTextTime, [timeClone])
+        .wait(2000)
         .to({ x: 300 }, 1000, createjs.Ease.getPowInOut(3))
-        .call(changeTextTime, [timeClone])
         .to({ x: 200 }, 1000, createjs.Ease.getPowInOut(3))
-        .call(changeTextTime, [timeClone]);
     createjs.Tween.get(work, { loop: true })
-        .to({ x: 20 }, 1000, createjs.Ease.getPowInOut(3))
-        .to({ x: 20 }, 1000, createjs.Ease.getPowInOut(3))
-        .to({ x: 20 }, 1000, createjs.Ease.getPowInOut(3))
+        .wait(1000)
+        .wait(2000)
         .to({ x: 340 }, 1000, createjs.Ease.getPowInOut(3))
         .to({ x: 340 }, 1000, createjs.Ease.getPowInOut(3))
         .call(incrementDone)
