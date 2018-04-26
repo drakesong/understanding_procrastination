@@ -4,7 +4,9 @@ var canvasNonPro;
 var stageNonPro;
 var canvasPro;
 var stagePro;
-
+var frust0;
+var frust1;
+var frust2;
 var key1;
 var key2;
 var key1Pixelated;
@@ -13,20 +15,46 @@ var key1Text;
 var key2Text;
 var revealBtn;
 var border;
-var currentTime;
+// var currentTime;
 // var running = false;
+var time = 0;
+var timeText = new createjs.Text("Time: " + time, "20px Arial", "#000000");
 
-var circle = new createjs.Graphics();
-circle.setStrokeStyle(1);
-circle.beginStroke(createjs.Graphics.getRGB(255, 0, 0));
-circle.beginFill(createjs.Graphics.getRGB(255, 0, 0));
-circle.drawCircle(0, 0, 40);
+var circle0 = new createjs.Graphics();
+circle0.setStrokeStyle(1);
+circle0.beginStroke(createjs.Graphics.getRGB(255, 0, 0));
+circle0.beginFill(createjs.Graphics.getRGB(255, 0, 0));
+circle0.drawCircle(0, 0, 40);
 
-var rect = new createjs.Graphics();
-rect.setStrokeStyle(1);
-rect.beginStroke(createjs.Graphics.getRGB(0, 0, 255));
-rect.beginFill(createjs.Graphics.getRGB(0, 0, 255));
-rect.drawRect(0, 0, 40, 60);
+var circle1 = new createjs.Graphics();
+circle1.setStrokeStyle(1);
+circle1.beginStroke(createjs.Graphics.getRGB(0, 255, 0));
+circle1.beginFill(createjs.Graphics.getRGB(0, 255, 0));
+circle1.drawCircle(0, 0, 40);
+
+var rect0 = new createjs.Graphics();
+rect0.setStrokeStyle(1);
+rect0.beginStroke(createjs.Graphics.getRGB(0, 0, 255));
+rect0.beginFill(createjs.Graphics.getRGB(0, 0, 255));
+rect0.drawRect(0, 0, 40, 60);
+
+var rect1 = new createjs.Graphics();
+rect1.setStrokeStyle(1);
+rect1.beginStroke(createjs.Graphics.getRGB(255, 140, 102));
+rect1.beginFill(createjs.Graphics.getRGB(255, 140, 102));
+rect1.drawRect(0, 0, 40, 60);
+
+var rect2 = new createjs.Graphics();
+rect2.setStrokeStyle(1);
+rect2.beginStroke(createjs.Graphics.getRGB(255, 83, 26));
+rect2.beginFill(createjs.Graphics.getRGB(255, 83, 26));
+rect2.drawRect(0, 0, 40, 60);
+
+var rect3 = new createjs.Graphics();
+rect3.setStrokeStyle(1);
+rect3.beginStroke(createjs.Graphics.getRGB(153, 38, 0));
+rect3.beginFill(createjs.Graphics.getRGB(153, 38, 0));
+rect3.drawRect(0, 0, 40, 60);
 
 function init() {
     canvas = document.getElementById("gameCanvas");
@@ -46,6 +74,17 @@ function init() {
     stagePro = new createjs.Stage(canvasPro);
 
     pro();
+
+    canvasFrust0 = document.getElementById("frust0Canvas");
+    canvasFrust1 = document.getElementById("frust1Canvas");
+    canvasFrust2 = document.getElementById("frust2Canvas");
+    stageFrust0 = new createjs.Stage(canvasFrust0);
+    stageFrust1 = new createjs.Stage(canvasFrust1);
+    stageFrust2 = new createjs.Stage(canvasFrust2);
+
+    frustration0(canvasFrust0, stageFrust0);
+    frustration1(canvasFrust1, stageFrust1);
+    frustration2(canvasFrust2, stageFrust2);
 }
 
 function initialScreen() {
@@ -206,8 +245,8 @@ function drawChart2() {
 }
 
 function nonPro() {
-    var worker = new createjs.Shape(circle);
-    var work = new createjs.Shape(rect);
+    var worker = new createjs.Shape(circle0);
+    var work = new createjs.Shape(rect0);
 
     worker.x = canvasNonPro.width / 2;
     worker.y = canvasNonPro.height / 2;
@@ -233,8 +272,8 @@ function nonPro() {
 }
 
 function pro() {
-    var worker = new createjs.Shape(circle);
-    var work = new createjs.Shape(rect);
+    var worker = new createjs.Shape(circle0);
+    var work = new createjs.Shape(rect0);
 
     worker.x = canvasPro.width / 2;
     worker.y = canvasPro.height / 2;
@@ -291,4 +330,178 @@ function pro() {
     createjs.Ticker.addEventListener("tick", stagePro);
 
     stagePro.update();
+}
+
+function frustration0(canvas, stage) {
+    var worker = new createjs.Shape(circle1);
+    var work = new createjs.Shape(rect1);
+    var done = 0;
+    var doneText = new createjs.Text("Done: " + done, "20px Arial", "#000000");
+
+    worker.x = canvas.width / 2;
+    worker.y = canvas.height / 2;
+
+    work.x = 20;
+    work.y = canvas.height / 2 - 30;
+
+    timeText.x = 10;
+    timeText.y = 10;
+
+    doneText.x = 300;
+    doneText.y = 10;
+
+    stage.addChild(worker);
+    stage.addChild(work);
+    stage.addChild(timeText);
+    stage.addChild(doneText);
+
+    createjs.Tween.get(worker, { loop: true })
+        .call(incrementTime)
+        .to({ x: 100 }, 1000, createjs.Ease.getPowInOut(3))
+        .call(changeTextTime, [timeText])
+        .call(incrementTime)
+        .to({ x: 300 }, 1000, createjs.Ease.getPowInOut(3))
+        .call(changeTextTime, [timeText])
+        .call(incrementTime)
+        .to({ x: 200 }, 1000, createjs.Ease.getPowInOut(3))
+        .call(changeTextTime, [timeText]);
+    createjs.Tween.get(work, { loop: true })
+        .to({ x: 20 }, 1000, createjs.Ease.getPowInOut(3))
+        .to({ x: 340 }, 1000, createjs.Ease.getPowInOut(3))
+        .to({ x: 340 }, 1000, createjs.Ease.getPowInOut(3))
+        .call(incrementDone)
+        .call(changeTextDone);
+    createjs.Ticker.setFPS(60);
+    createjs.Ticker.addEventListener("tick", stage);
+
+    stage.update();
+
+    function incrementDone() {
+        // console.log(done);
+        return done++;
+    }
+
+    function changeTextDone() {
+        doneText.text = "Done: " + done;
+        return doneText;
+    }
+}
+
+function frustration1(canvas, stage) {
+    var worker = new createjs.Shape(circle1);
+    var work = new createjs.Shape(rect2);
+    var timeClone = timeText.clone();
+    var done = 0;
+    var doneText = new createjs.Text("Done: " + done, "20px Arial", "#000000");
+
+    worker.x = canvas.width / 2;
+    worker.y = canvas.height / 2;
+
+    work.x = 20;
+    work.y = canvas.height / 2 - 30;
+
+    doneText.x = 300;
+    doneText.y = 10;
+
+    stage.addChild(worker);
+    stage.addChild(work);
+    stage.addChild(timeClone);
+    stage.addChild(doneText);
+
+    createjs.Tween.get(worker, { loop: true })
+        .to({ x: 100 }, 1000, createjs.Ease.getPowInOut(3))
+        .call(changeTextTime, [timeClone])
+        .to({ x: 100 }, 1000, createjs.Ease.getPowInOut(3))
+        .call(changeTextTime, [timeClone])
+        .to({ x: 300 }, 1000, createjs.Ease.getPowInOut(3))
+        .call(changeTextTime, [timeClone])
+        .to({ x: 200 }, 1000, createjs.Ease.getPowInOut(3))
+        .call(changeTextTime, [timeClone]);
+    createjs.Tween.get(work, { loop: true })
+        .to({ x: 20 }, 1000, createjs.Ease.getPowInOut(3))
+        .to({ x: 20 }, 1000, createjs.Ease.getPowInOut(3))
+        .to({ x: 340 }, 1000, createjs.Ease.getPowInOut(3))
+        .to({ x: 340 }, 1000, createjs.Ease.getPowInOut(3))
+        .call(incrementDone)
+        .call(changeTextDone);
+    createjs.Ticker.setFPS(60);
+    createjs.Ticker.addEventListener("tick", stage);
+
+    stage.update();
+
+    function incrementDone() {
+        // console.log(done);
+        return done++;
+    }
+
+    function changeTextDone() {
+        doneText.text = "Done: " + done;
+        return doneText;
+    }
+}
+
+function frustration2(canvas, stage) {
+    var worker = new createjs.Shape(circle1);
+    var work = new createjs.Shape(rect3);
+    var timeClone = timeText.clone();
+    var done = 0;
+    var doneText = new createjs.Text("Done: " + done, "20px Arial", "#000000");
+
+    worker.x = canvas.width / 2;
+    worker.y = canvas.height / 2;
+
+    work.x = 20;
+    work.y = canvas.height / 2 - 30;
+
+    doneText.x = 300;
+    doneText.y = 10;
+
+    stage.addChild(worker);
+    stage.addChild(work);
+    stage.addChild(timeClone);
+    stage.addChild(doneText);
+
+    createjs.Tween.get(worker, { loop: true })
+        .to({ x: 100 }, 1000, createjs.Ease.getPowInOut(3))
+        .call(changeTextTime, [timeClone])
+        .to({ x: 100 }, 1000, createjs.Ease.getPowInOut(3))
+        .call(changeTextTime, [timeClone])
+        .to({ x: 100 }, 1000, createjs.Ease.getPowInOut(3))
+        .call(changeTextTime, [timeClone])
+        .to({ x: 300 }, 1000, createjs.Ease.getPowInOut(3))
+        .call(changeTextTime, [timeClone])
+        .to({ x: 200 }, 1000, createjs.Ease.getPowInOut(3))
+        .call(changeTextTime, [timeClone]);
+    createjs.Tween.get(work, { loop: true })
+        .to({ x: 20 }, 1000, createjs.Ease.getPowInOut(3))
+        .to({ x: 20 }, 1000, createjs.Ease.getPowInOut(3))
+        .to({ x: 20 }, 1000, createjs.Ease.getPowInOut(3))
+        .to({ x: 340 }, 1000, createjs.Ease.getPowInOut(3))
+        .to({ x: 340 }, 1000, createjs.Ease.getPowInOut(3))
+        .call(incrementDone)
+        .call(changeTextDone);
+    createjs.Ticker.setFPS(60);
+    createjs.Ticker.addEventListener("tick", stage);
+
+    stage.update();
+
+    function incrementDone() {
+        // console.log(done);
+        return done++;
+    }
+
+    function changeTextDone() {
+        doneText.text = "Done: " + done;
+        return doneText;
+    }
+}
+
+function incrementTime() {
+    // console.log(time);
+    return time++;
+}
+
+function changeTextTime(t) {
+    t.text = "Time: " + time;
+    return t;
 }

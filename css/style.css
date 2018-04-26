@@ -38,10 +38,10 @@ p {
     width: 100%;
 }
 
-#chart_parent {
+#chart_parent, .interactive_frust {
     text-align: center;
 }
 
-#chart_div1, #chart_div2 {
+#chart_div1, #chart_div2, #frust0Canvas, #frust1Canvas, #frust2Canvas {
     display: inline-block;
 }
