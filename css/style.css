@@ -38,7 +38,7 @@ p {
     width: 100%;
 }
 
-#chart_parent, .interactive_frust {
+#chart_parent, .interactive_frust, .interactive_frust_and_pers {
     text-align: center;
 }
 
