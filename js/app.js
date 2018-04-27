@@ -17,8 +17,12 @@ var revealBtn;
 var border;
 // var currentTime;
 // var running = false;
-var time = 0;
-var timeText = new createjs.Text("Time: " + time, "20px Arial", "#000000");
+var time0 = 0;
+var timeText0 = new createjs.Text("Time: " + time0, "20px Arial", "#000000");
+var time1 = 0;
+var timeText1 = new createjs.Text("Time: " + time1, "20px Arial", "#000000");
+var time2 = 0;
+var timeText2 = new createjs.Text("Time: " + time2, "20px Arial", "#000000");
 
 var circle0 = new createjs.Graphics();
 circle0.setStrokeStyle(1);
@@ -410,20 +414,20 @@ function frustration0(canvas, stage) {
     work.x = 20;
     work.y = canvas.height / 2 - 30;
 
-    timeText.x = 10;
-    timeText.y = 10;
+    timeText0.x = 10;
+    timeText0.y = 10;
 
     doneText.x = 300;
     doneText.y = 10;
 
     stage.addChild(worker);
     stage.addChild(work);
-    stage.addChild(timeText);
+    stage.addChild(timeText0);
     stage.addChild(doneText);
 
-    createjs.Tween.get(timeText, { loop: true })
-        .call(changeTextTime, [timeText])
-        .call(incrementTime)
+    createjs.Tween.get(timeText0, { loop: true })
+        .call(changeTextTime0, [timeText0])
+        .call(incrementTime0)
         .wait(1000);
     createjs.Tween.get(worker, { loop: true })
         .to({ x: 100 }, 1000, createjs.Ease.getPowInOut(3))
@@ -456,7 +460,7 @@ function frustration1(canvas, stage) {
 
     var worker = new createjs.Shape(circle1);
     var work = new createjs.Shape(rect1_1);
-    var timeClone = timeText.clone();
+    var timeClone = timeText0.clone();
     var done = 0;
     var doneText = new createjs.Text("Done: " + done, "20px Arial", "#000000");
     var waitTime = calculateProcrastination(0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5) * 1000;
@@ -477,7 +481,7 @@ function frustration1(canvas, stage) {
 
     createjs.Tween.get(timeClone, { loop: true })
         .wait(1000)
-        .call(changeTextTime, [timeClone]);
+        .call(changeTextTime0, [timeClone]);
     createjs.Tween.get(worker, { loop: true })
         .to({ x: 100 }, 1000, createjs.Ease.getPowInOut(3))
         .to({ x: 300 }, waitTime, createjs.Ease.getPowInOut(3))
@@ -506,7 +510,7 @@ function frustration1(canvas, stage) {
 function frustration2(canvas, stage) {
     var worker = new createjs.Shape(circle1);
     var work = new createjs.Shape(rect1_2);
-    var timeClone = timeText.clone();
+    var timeClone = timeText0.clone();
     var done = 0;
     var doneText = new createjs.Text("Done: " + done, "20px Arial", "#000000");
     var waitTime = calculateProcrastination(0.5, 0.5, 0.5, 0.5, 0.5, 1, 0.5, 0.5, 0.5, 0.5) * 1000;
@@ -527,7 +531,7 @@ function frustration2(canvas, stage) {
 
     createjs.Tween.get(timeClone, { loop: true })
         .wait(1000)
-        .call(changeTextTime, [timeClone]);
+        .call(changeTextTime0, [timeClone]);
     createjs.Tween.get(worker, { loop: true })
         .to({ x: 100 }, 1000, createjs.Ease.getPowInOut(3))
         .to({ x: 300 }, waitTime, createjs.Ease.getPowInOut(3))
@@ -553,12 +557,30 @@ function frustration2(canvas, stage) {
     }
 }
 
-function incrementTime() {
-    return time++;
+function incrementTime0() {
+    return time0++;
 }
 
-function changeTextTime(t) {
-    t.text = "Time: " + time;
+function changeTextTime0(t) {
+    t.text = "Time: " + time0;
+    return t;
+}
+
+function incrementTime1() {
+    return time1++;
+}
+
+function changeTextTime1(t) {
+    t.text = "Time: " + time1;
+    return t;
+}
+
+function incrementTime2() {
+    return time2++;
+}
+
+function changeTextTime2(t) {
+    t.text = "Time: " + time2;
     return t;
 }
 
@@ -581,7 +603,6 @@ function initialFrPe(s, c) {
 function frust_pers0(canvas, stage) {
     var worker = new createjs.Shape(circle1);
     var work = new createjs.Shape(rect2_0);
-    var timeClone = timeText.clone();
     var done = 0;
     var doneText = new createjs.Text("Done: " + done, "20px Arial", "#000000");
     var waitTime = calculateProcrastination(0.5, 0.5, 0.5, 0.5, 0.5, 0.01, 0.5, 0.5, 1, 0.5) * 1000;
@@ -592,20 +613,21 @@ function frust_pers0(canvas, stage) {
     work.x = 20;
     work.y = canvas.height / 2 - 30;
 
-    timeClone.x = 10;
-    timeClone.y = 10;
+    timeText1.x = 10;
+    timeText1.y = 10;
 
     doneText.x = 300;
     doneText.y = 10;
 
     stage.addChild(worker);
     stage.addChild(work);
-    stage.addChild(timeClone);
+    stage.addChild(timeText1);
     stage.addChild(doneText);
 
-    createjs.Tween.get(timeClone, { loop: true })
-        .wait(1000)
-        .call(changeTextTime, [timeClone]);
+    createjs.Tween.get(timeText1, { loop: true })
+        .call(changeTextTime1, [timeText1])
+        .call(incrementTime1)
+        .wait(1000);
     createjs.Tween.get(worker, { loop: true })
         .to({ x: 100 }, 1000, createjs.Ease.getPowInOut(3))
         .to({ x: 300 }, waitTime, createjs.Ease.getPowInOut(3))
@@ -637,7 +659,7 @@ function frust_pers1(canvas, stage) {
 
     var worker = new createjs.Shape(circle1);
     var work = new createjs.Shape(rect2_1);
-    var timeClone = timeText.clone();
+    var timeClone = timeText1.clone();
     var done = 0;
     var doneText = new createjs.Text("Done: " + done, "20px Arial", "#000000");
     var waitTime = calculateProcrastination(0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5) * 1000;
@@ -658,7 +680,7 @@ function frust_pers1(canvas, stage) {
 
     createjs.Tween.get(timeClone, { loop: true })
         .wait(1000)
-        .call(changeTextTime, [timeClone]);
+        .call(changeTextTime1, [timeClone]);
     createjs.Tween.get(worker, { loop: true })
         .to({ x: 100 }, 1000, createjs.Ease.getPowInOut(3))
         .to({ x: 300 }, waitTime, createjs.Ease.getPowInOut(3))
@@ -687,7 +709,7 @@ function frust_pers1(canvas, stage) {
 function frust_pers2(canvas, stage) {
     var worker = new createjs.Shape(circle1);
     var work = new createjs.Shape(rect2_2);
-    var timeClone = timeText.clone();
+    var timeClone = timeText1.clone();
     var done = 0;
     var doneText = new createjs.Text("Done: " + done, "20px Arial", "#000000");
     var waitTime = calculateProcrastination(0.5, 0.5, 0.5, 0.5, 0.5, 1, 0.5, 0.5, 0.01, 0.5) * 1000;
@@ -708,7 +730,7 @@ function frust_pers2(canvas, stage) {
 
     createjs.Tween.get(timeClone, { loop: true })
         .wait(1000)
-        .call(changeTextTime, [timeClone]);
+        .call(changeTextTime1, [timeClone]);
     createjs.Tween.get(worker, { loop: true })
         .to({ x: 100 }, 1000, createjs.Ease.getPowInOut(3))
         .to({ x: 300 }, waitTime, createjs.Ease.getPowInOut(3))
@@ -737,10 +759,20 @@ function frust_pers2(canvas, stage) {
 function taskSliders(canvas, stage) {
     var worker = new createjs.Shape(circle1);
     var work = new createjs.Shape(rect3);
-    var timeClone = timeText.clone();
     var done = 0;
     var doneText = new createjs.Text("Done: " + done, "20px Arial", "#000000");
-    var waitTime = calculateProcrastination(0.5, 0.5, 0.5, 0.5, 0.5, 1, 0.5, 0.5, 0.01, 0.5) * 1000;
+    var waitTime = calculateProcrastination(
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        getSliderValue(0),
+        getSliderValue(1),
+        getSliderValue(2),
+        getSliderValue(3),
+        getSliderValue(4),
+        0.5
+    ) * 1000;
 
     worker.x = canvas.width / 2;
     worker.y = canvas.height / 2;
@@ -748,25 +780,29 @@ function taskSliders(canvas, stage) {
     work.x = 20;
     work.y = canvas.height / 2 - 30;
 
-    doneText.x = 300;
+    timeText2.x = 10;
+    timeText2.y = 10;
+
+    doneText.x = 700;
     doneText.y = 10;
 
     stage.addChild(worker);
     stage.addChild(work);
-    stage.addChild(timeClone);
+    stage.addChild(timeText2);
     stage.addChild(doneText);
 
-    createjs.Tween.get(timeClone, { loop: true })
-        .wait(1000)
-        .call(changeTextTime, [timeClone]);
+    createjs.Tween.get(timeText2, { loop: true })
+        .call(changeTextTime2, [timeText2])
+        .call(incrementTime2)
+        .wait(1000);
     createjs.Tween.get(worker, { loop: true })
         .to({ x: 100 }, 1000, createjs.Ease.getPowInOut(3))
-        .to({ x: 300 }, waitTime, createjs.Ease.getPowInOut(3))
-        .to({ x: 200 }, 1000, createjs.Ease.getPowInOut(3))
+        .to({ x: 700 }, waitTime, createjs.Ease.getPowInOut(3))
+        .to({ x: 400 }, 1000, createjs.Ease.getPowInOut(3))
     createjs.Tween.get(work, { loop: true })
         .wait(1000)
-        .to({ x: 340 }, waitTime, createjs.Ease.getPowInOut(3))
-        .to({ x: 340 }, 1000, createjs.Ease.getPowInOut(3))
+        .to({ x: 740 }, waitTime, createjs.Ease.getPowInOut(3))
+        .to({ x: 740 }, 1000, createjs.Ease.getPowInOut(3))
         .call(incrementDone)
         .call(changeTextDone);
     createjs.Ticker.setFPS(30);
@@ -782,4 +818,14 @@ function taskSliders(canvas, stage) {
         doneText.text = "Done: " + done;
         return doneText;
     }
+
+    function getSliderValue(i) {
+        var slider = document.getElementById("inputId"+i);
+        slider.onchange = function() {
+            console.log(this.value/100 + 0.01);
+            return this.value/100 + 0.01;
+        }
+    }
+
+    getSliderValue(0);
 }
