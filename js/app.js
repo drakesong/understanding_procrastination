@@ -337,6 +337,8 @@ function frustration0(canvas, stage) {
     var work = new createjs.Shape(rect1);
     var done = 0;
     var doneText = new createjs.Text("Done: " + done, "20px Arial", "#000000");
+    var waitTime = calculateProcrastination(0.5, 0.5, 0.5, 0.5, 0.5, 0.01, 0.5, 0.5, 0.5, 0.5) * 1000;
+    console.log(waitTime);
 
     worker.x = canvas.width / 2;
     worker.y = canvas.height / 2;
@@ -355,20 +357,17 @@ function frustration0(canvas, stage) {
     stage.addChild(timeText);
     stage.addChild(doneText);
 
+    createjs.Tween.get(timeText, { loop: true })
+        .call(changeTextTime, [timeText])
+        .call(incrementTime)
+        .wait(1000);
     createjs.Tween.get(worker, { loop: true })
-        .call(incrementTime)
         .to({ x: 100 }, 1000, createjs.Ease.getPowInOut(3))
-        .call(changeTextTime, [timeText])
-        .call(incrementTime)
-        .to({ x: 300 }, 1000, createjs.Ease.getPowInOut(3))
-        .call(changeTextTime, [timeText])
-        .call(incrementTime)
-        .to({ x: 200 }, 1000, createjs.Ease.getPowInOut(3))
-        .call(changeTextTime, [timeText]);
+        .to({ x: 300 }, waitTime, createjs.Ease.getPowInOut(3))
+        .to({ x: 200 }, 1000, createjs.Ease.getPowInOut(3));
     createjs.Tween.get(work, { loop: true })
         .wait(1000)
-        .wait(0)
-        .to({ x: 340 }, 1000, createjs.Ease.getPowInOut(3))
+        .to({ x: 340 }, waitTime, createjs.Ease.getPowInOut(3))
         .to({ x: 340 }, 1000, createjs.Ease.getPowInOut(3))
         .call(incrementDone)
         .call(changeTextDone);
@@ -394,6 +393,7 @@ function frustration1(canvas, stage) {
     var timeClone = timeText.clone();
     var done = 0;
     var doneText = new createjs.Text("Done: " + done, "20px Arial", "#000000");
+    var waitTime = calculateProcrastination(0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5) * 1000;
 
     worker.x = canvas.width / 2;
     worker.y = canvas.height / 2;
@@ -414,13 +414,11 @@ function frustration1(canvas, stage) {
         .call(changeTextTime, [timeClone]);
     createjs.Tween.get(worker, { loop: true })
         .to({ x: 100 }, 1000, createjs.Ease.getPowInOut(3))
-        .wait(1000)
-        .to({ x: 300 }, 1000, createjs.Ease.getPowInOut(3))
+        .to({ x: 300 }, waitTime, createjs.Ease.getPowInOut(3))
         .to({ x: 200 }, 1000, createjs.Ease.getPowInOut(3));
     createjs.Tween.get(work, { loop: true })
         .wait(1000)
-        .wait(1000)
-        .to({ x: 340 }, 1000, createjs.Ease.getPowInOut(3))
+        .to({ x: 340 }, waitTime, createjs.Ease.getPowInOut(3))
         .to({ x: 340 }, 1000, createjs.Ease.getPowInOut(3))
         .call(incrementDone)
         .call(changeTextDone);
@@ -446,6 +444,7 @@ function frustration2(canvas, stage) {
     var timeClone = timeText.clone();
     var done = 0;
     var doneText = new createjs.Text("Done: " + done, "20px Arial", "#000000");
+    var waitTime = calculateProcrastination(0.5, 0.5, 0.5, 0.5, 0.5, 1, 0.5, 0.5, 0.5, 0.5) * 1000;
 
     worker.x = canvas.width / 2;
     worker.y = canvas.height / 2;
@@ -466,13 +465,11 @@ function frustration2(canvas, stage) {
         .call(changeTextTime, [timeClone]);
     createjs.Tween.get(worker, { loop: true })
         .to({ x: 100 }, 1000, createjs.Ease.getPowInOut(3))
-        .wait(2000)
-        .to({ x: 300 }, 1000, createjs.Ease.getPowInOut(3))
+        .to({ x: 300 }, waitTime, createjs.Ease.getPowInOut(3))
         .to({ x: 200 }, 1000, createjs.Ease.getPowInOut(3))
     createjs.Tween.get(work, { loop: true })
         .wait(1000)
-        .wait(2000)
-        .to({ x: 340 }, 1000, createjs.Ease.getPowInOut(3))
+        .to({ x: 340 }, waitTime, createjs.Ease.getPowInOut(3))
         .to({ x: 340 }, 1000, createjs.Ease.getPowInOut(3))
         .call(incrementDone)
         .call(changeTextDone);
@@ -493,11 +490,15 @@ function frustration2(canvas, stage) {
 }
 
 function incrementTime() {
-    // console.log(time);
+    console.log(time);
     return time++;
 }
 
 function changeTextTime(t) {
     t.text = "Time: " + time;
     return t;
+}
+
+function calculateProcrastination(im, ss, c, e, b, f, st, d, p, i) {
+    return ((im + i)**3 * (ss + (b + f)/(c + p)) * d) / (st * e * (c + p/im));
 }
