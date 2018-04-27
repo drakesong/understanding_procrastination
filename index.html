@@ -8,6 +8,7 @@
     <script src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="js/app.js"></script>
     <script src="js/Button.js"></script>
+    <script src="js/Slider.js"></script>
     <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
     <title>Understanding Procrastination</title>
 </head>
@@ -166,6 +167,27 @@
     <p>
         Explanation
     </p>
+    <div class="task_slider">
+        <canvas id="taskCanvas" width="800px" height="400px" style="background:grey;"></canvas>
+        <div id="sliders">
+            <output name="textName0" id="textId0">Boredom</output>
+            <input type="range" name="inputName0" id="inputId0" value="50" min="1" max="100" oninput="outputId0.value = inputId0.value">
+            <output name="outputName0" id="outputId0">50</output><br />
+            <output name="textName1" id="textId1">Frustration</output>
+            <input type="range" name="inputName1" id="inputId1" value="50" min="1" max="100" oninput="outputId1.value = inputId1.value">
+            <output name="outputName1" id="outputId1">50</output><br />
+            <output name="textName2" id="textId2">Structure</output>
+            <input type="range" name="inputName2" id="inputId2" value="50" min="1" max="100" oninput="outputId2.value = inputId2.value">
+            <output name="outputName2" id="outputId2">50</output><br />
+            <output name="textName3" id="textId3">Delay</output>
+            <input type="range" name="inputName3" id="inputId3" value="50" min="1" max="100" oninput="outputId3.value = inputId3.value">
+            <output name="outputName3" id="outputId3">50</output><br />
+            <output name="textName4" id="textId4">Personal Meaning</output>
+            <input type="range" name="inputName4" id="inputId4" value="50" min="1" max="100" oninput="outputId4.value = inputId4.value">
+            <output name="outputName4" id="outputId4">50</output><br />
+        </div>
+    </div>
+
     <p>
         <ul>
             <li>

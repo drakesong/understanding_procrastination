@@ -80,6 +80,12 @@ rect2_2.beginStroke(createjs.Graphics.getRGB(26, 101, 101));
 rect2_2.beginFill(createjs.Graphics.getRGB(26, 101, 101));
 rect2_2.drawRect(0, 0, 40, 60);
 
+var rect3 = new createjs.Graphics();
+rect3.setStrokeStyle(1);
+rect3.beginStroke(createjs.Graphics.getRGB(153, 102, 255));
+rect3.beginFill(createjs.Graphics.getRGB(153, 102, 255));
+rect3.drawRect(0, 0, 40, 60);
+
 function init() {
     canvas = document.getElementById("gameCanvas");
     stage = new createjs.Stage(canvas);
@@ -106,9 +112,13 @@ function init() {
     stageFrust1 = new createjs.Stage(canvasFrust1);
     stageFrust2 = new createjs.Stage(canvasFrust2);
 
-    frustration0(canvasFrust0, stageFrust0);
-    frustration1(canvasFrust1, stageFrust1);
-    frustration2(canvasFrust2, stageFrust2);
+    initialFrustration(stageFrust1, canvasFrust1);
+    canvasFrust1.addEventListener("click", function startFrust(event) {
+        frustration0(canvasFrust0, stageFrust0);
+        frustration1(canvasFrust1, stageFrust1);
+        frustration2(canvasFrust2, stageFrust2);
+        canvasFrust1.removeEventListener("click", startFrust);
+    });
 
     canvasFrPe0 = document.getElementById("frpe0Canvas");
     canvasFrPe1 = document.getElementById("frpe1Canvas");
@@ -117,9 +127,18 @@ function init() {
     stageFrPe1 = new createjs.Stage(canvasFrPe1);
     stageFrPe2 = new createjs.Stage(canvasFrPe2);
 
-    frust_pers0(canvasFrPe0, stageFrPe0);
-    frust_pers1(canvasFrPe1, stageFrPe1);
-    frust_pers2(canvasFrPe2, stageFrPe2);
+    initialFrPe(stageFrPe1, canvasFrPe1);
+    canvasFrPe1.addEventListener("click", function startFrPe(event) {
+        frust_pers0(canvasFrPe0, stageFrPe0);
+        frust_pers1(canvasFrPe1, stageFrPe1);
+        frust_pers2(canvasFrPe2, stageFrPe2);
+        canvasFrPe1.removeEventListener("click", startFrPe);
+    });
+
+    canvasTask = document.getElementById("taskCanvas");
+    stageTask = new createjs.Stage(canvasTask);
+
+    taskSliders(canvasTask, stageTask);
 }
 
 function initialScreen() {
@@ -131,7 +150,6 @@ function initialScreen() {
     messageField.y = canvas.height / 2;
 
     stage.addChild(messageField);
-
     stage.update();
 }
 
@@ -300,7 +318,7 @@ function nonPro() {
         .to({ x: 117 }, 1000, createjs.Ease.getPowInOut(3))
         .to({ x: 640 }, 1000, createjs.Ease.getPowInOut(3))
         .to({ x: 640 }, 1000, createjs.Ease.getPowInOut(3));
-    createjs.Ticker.setFPS(60);
+    createjs.Ticker.setFPS(30);
     createjs.Ticker.addEventListener("tick", stageNonPro);
 
     stageNonPro.update();
@@ -361,10 +379,22 @@ function pro() {
         .to({ x: 367 }, 1000, createjs.Ease.getPowInOut(3))
         .to({ x: 640 }, 1000, createjs.Ease.getPowInOut(3))
         .to({ x: 640 }, 1000, createjs.Ease.getPowInOut(3));
-    createjs.Ticker.setFPS(60);
+    createjs.Ticker.setFPS(30);
     createjs.Ticker.addEventListener("tick", stagePro);
 
     stagePro.update();
+}
+
+function initialFrustration(s, c) {
+    var messageField = new createjs.Text("Click to start", "bold 24px Sans-serif", "#000000");
+    messageField.maxWidth = 1000;
+    messageField.textAlign = "center";
+    messageField.textBaseline = "middle";
+    messageField.x = c.width / 2;
+    messageField.y = c.height / 2;
+
+    s.addChild(messageField);
+    s.update();
 }
 
 function frustration0(canvas, stage) {
@@ -405,7 +435,7 @@ function frustration0(canvas, stage) {
         .to({ x: 340 }, 1000, createjs.Ease.getPowInOut(3))
         .call(incrementDone)
         .call(changeTextDone);
-    createjs.Ticker.setFPS(60);
+    createjs.Ticker.setFPS(30);
     createjs.Ticker.addEventListener("tick", stage);
 
     stage.update();
@@ -421,6 +451,9 @@ function frustration0(canvas, stage) {
 }
 
 function frustration1(canvas, stage) {
+    stage.removeAllChildren();
+    stage.clear();
+
     var worker = new createjs.Shape(circle1);
     var work = new createjs.Shape(rect1_1);
     var timeClone = timeText.clone();
@@ -455,7 +488,7 @@ function frustration1(canvas, stage) {
         .to({ x: 340 }, 1000, createjs.Ease.getPowInOut(3))
         .call(incrementDone)
         .call(changeTextDone);
-    createjs.Ticker.setFPS(60);
+    createjs.Ticker.setFPS(30);
     createjs.Ticker.addEventListener("tick", stage);
 
     stage.update();
@@ -505,7 +538,7 @@ function frustration2(canvas, stage) {
         .to({ x: 340 }, 1000, createjs.Ease.getPowInOut(3))
         .call(incrementDone)
         .call(changeTextDone);
-    createjs.Ticker.setFPS(60);
+    createjs.Ticker.setFPS(30);
     createjs.Ticker.addEventListener("tick", stage);
 
     stage.update();
@@ -533,8 +566,20 @@ function calculateProcrastination(im, ss, c, e, b, f, st, d, p, i) {
     return ((im + i)**3 * (ss + (b + f)/(c + p)) * d) / (st * e * (c + p/im));
 }
 
+function initialFrPe(s, c) {
+    var messageField = new createjs.Text("Click to start", "bold 24px Sans-serif", "#000000");
+    messageField.maxWidth = 1000;
+    messageField.textAlign = "center";
+    messageField.textBaseline = "middle";
+    messageField.x = c.width / 2;
+    messageField.y = c.height / 2;
+
+    s.addChild(messageField);
+    s.update();
+}
+
 function frust_pers0(canvas, stage) {
-    var worker = new createjs.Shape(circle2);
+    var worker = new createjs.Shape(circle1);
     var work = new createjs.Shape(rect2_0);
     var timeClone = timeText.clone();
     var done = 0;
@@ -571,7 +616,7 @@ function frust_pers0(canvas, stage) {
         .to({ x: 340 }, 1000, createjs.Ease.getPowInOut(3))
         .call(incrementDone)
         .call(changeTextDone);
-    createjs.Ticker.setFPS(60);
+    createjs.Ticker.setFPS(30);
     createjs.Ticker.addEventListener("tick", stage);
 
     stage.update();
@@ -587,7 +632,10 @@ function frust_pers0(canvas, stage) {
 }
 
 function frust_pers1(canvas, stage) {
-    var worker = new createjs.Shape(circle2);
+    stage.removeAllChildren();
+    stage.clear();
+
+    var worker = new createjs.Shape(circle1);
     var work = new createjs.Shape(rect2_1);
     var timeClone = timeText.clone();
     var done = 0;
@@ -621,7 +669,7 @@ function frust_pers1(canvas, stage) {
         .to({ x: 340 }, 1000, createjs.Ease.getPowInOut(3))
         .call(incrementDone)
         .call(changeTextDone);
-    createjs.Ticker.setFPS(60);
+    createjs.Ticker.setFPS(30);
     createjs.Ticker.addEventListener("tick", stage);
 
     stage.update();
@@ -637,7 +685,7 @@ function frust_pers1(canvas, stage) {
 }
 
 function frust_pers2(canvas, stage) {
-    var worker = new createjs.Shape(circle2);
+    var worker = new createjs.Shape(circle1);
     var work = new createjs.Shape(rect2_2);
     var timeClone = timeText.clone();
     var done = 0;
@@ -671,7 +719,57 @@ function frust_pers2(canvas, stage) {
         .to({ x: 340 }, 1000, createjs.Ease.getPowInOut(3))
         .call(incrementDone)
         .call(changeTextDone);
-    createjs.Ticker.setFPS(60);
+    createjs.Ticker.setFPS(30);
+    createjs.Ticker.addEventListener("tick", stage);
+
+    stage.update();
+
+    function incrementDone() {
+        return done++;
+    }
+
+    function changeTextDone() {
+        doneText.text = "Done: " + done;
+        return doneText;
+    }
+}
+
+function taskSliders(canvas, stage) {
+    var worker = new createjs.Shape(circle1);
+    var work = new createjs.Shape(rect3);
+    var timeClone = timeText.clone();
+    var done = 0;
+    var doneText = new createjs.Text("Done: " + done, "20px Arial", "#000000");
+    var waitTime = calculateProcrastination(0.5, 0.5, 0.5, 0.5, 0.5, 1, 0.5, 0.5, 0.01, 0.5) * 1000;
+
+    worker.x = canvas.width / 2;
+    worker.y = canvas.height / 2;
+
+    work.x = 20;
+    work.y = canvas.height / 2 - 30;
+
+    doneText.x = 300;
+    doneText.y = 10;
+
+    stage.addChild(worker);
+    stage.addChild(work);
+    stage.addChild(timeClone);
+    stage.addChild(doneText);
+
+    createjs.Tween.get(timeClone, { loop: true })
+        .wait(1000)
+        .call(changeTextTime, [timeClone]);
+    createjs.Tween.get(worker, { loop: true })
+        .to({ x: 100 }, 1000, createjs.Ease.getPowInOut(3))
+        .to({ x: 300 }, waitTime, createjs.Ease.getPowInOut(3))
+        .to({ x: 200 }, 1000, createjs.Ease.getPowInOut(3))
+    createjs.Tween.get(work, { loop: true })
+        .wait(1000)
+        .to({ x: 340 }, waitTime, createjs.Ease.getPowInOut(3))
+        .to({ x: 340 }, 1000, createjs.Ease.getPowInOut(3))
+        .call(incrementDone)
+        .call(changeTextDone);
+    createjs.Ticker.setFPS(30);
     createjs.Ticker.addEventListener("tick", stage);
 
     stage.update();

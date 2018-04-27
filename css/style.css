@@ -21,7 +21,6 @@ p {
     position: relative;
     width: 800px;
     height: 400px;
-    /* border: 1px solid red; */
     margin: 0 auto;
 }
 
@@ -38,7 +37,7 @@ p {
     width: 100%;
 }
 
-#chart_parent, .interactive_frust, .interactive_frust_and_pers {
+#chart_parent, .interactive_frust, .interactive_frust_and_pers, .task_slider {
     text-align: center;
 }
 
