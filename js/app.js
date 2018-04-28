@@ -23,6 +23,8 @@ var time1 = 0;
 var timeText1 = new createjs.Text("Time: " + time1, "20px Arial", "#000000");
 var time2 = 0;
 var timeText2 = new createjs.Text("Time: " + time2, "20px Arial", "#000000");
+var time3 = 0;
+var timeText3 = new createjs.Text("Time: " + time3, "20px Arial", "#000000");
 
 var circle0 = new createjs.Graphics();
 circle0.setStrokeStyle(1);
@@ -41,6 +43,24 @@ circle2.setStrokeStyle(1);
 circle2.beginStroke(createjs.Graphics.getRGB(255, 0, 255));
 circle2.beginFill(createjs.Graphics.getRGB(255, 0, 255));
 circle2.drawCircle(0, 0, 40);
+
+var circle3_0 = new createjs.Graphics();
+circle3_0.setStrokeStyle(1);
+circle3_0.beginStroke(createjs.Graphics.getRGB(255, 255, 128));
+circle3_0.beginFill(createjs.Graphics.getRGB(255, 255, 128));
+circle3_0.drawCircle(0, 0, 40);
+
+var circle3_1 = new createjs.Graphics();
+circle3_1.setStrokeStyle(1);
+circle3_1.beginStroke(createjs.Graphics.getRGB(255, 255, 0));
+circle3_1.beginFill(createjs.Graphics.getRGB(255, 255, 0));
+circle3_1.drawCircle(0, 0, 40);
+
+var circle3_2 = new createjs.Graphics();
+circle3_2.setStrokeStyle(1);
+circle3_2.beginStroke(createjs.Graphics.getRGB(190, 190, 0));
+circle3_2.beginFill(createjs.Graphics.getRGB(190, 190, 0));
+circle3_2.drawCircle(0, 0, 40);
 
 var rect0 = new createjs.Graphics();
 rect0.setStrokeStyle(1);
@@ -86,9 +106,15 @@ rect2_2.drawRect(0, 0, 40, 60);
 
 var rect3 = new createjs.Graphics();
 rect3.setStrokeStyle(1);
-rect3.beginStroke(createjs.Graphics.getRGB(153, 102, 255));
-rect3.beginFill(createjs.Graphics.getRGB(153, 102, 255));
+rect3.beginStroke(createjs.Graphics.getRGB(153, 50, 255));
+rect3.beginFill(createjs.Graphics.getRGB(153, 50, 255));
 rect3.drawRect(0, 0, 40, 60);
+
+var rect4 = new createjs.Graphics();
+rect4.setStrokeStyle(1);
+rect4.beginStroke(createjs.Graphics.getRGB(204, 0, 0));
+rect4.beginFill(createjs.Graphics.getRGB(204, 0, 0));
+rect4.drawRect(0, 0, 40, 60);
 
 function init() {
     canvas = document.getElementById("gameCanvas");
@@ -142,7 +168,28 @@ function init() {
     canvasTask = document.getElementById("taskCanvas");
     stageTask = new createjs.Stage(canvasTask);
 
-    taskSliders(canvasTask, stageTask);
+    document.getElementById("taskButton").addEventListener("click", function() {
+        stageTask.removeAllChildren();
+        stageTask.clear();
+        time2 = 0;
+        createjs.Tween.removeTweens(timeText2);
+        taskSliders(canvasTask, stageTask);
+    });
+
+    canvasCon0 = document.getElementById("con0Canvas");
+    canvasCon1 = document.getElementById("con1Canvas");
+    canvasCon2 = document.getElementById("con2Canvas");
+    stageCon0 = new createjs.Stage(canvasCon0);
+    stageCon1 = new createjs.Stage(canvasCon1);
+    stageCon2 = new createjs.Stage(canvasCon2);
+
+    initialCon(stageCon1, canvasCon1);
+    canvasCon1.addEventListener("click", function startCon(event) {
+        con0(canvasCon0, stageCon0);
+        con1(canvasCon1, stageCon1);
+        con2(canvasCon2, stageCon2);
+        canvasCon1.removeEventListener("click", startCon);
+    });
 }
 
 function initialScreen() {
@@ -584,6 +631,15 @@ function changeTextTime2(t) {
     return t;
 }
 
+function incrementTime3() {
+    return time3++;
+}
+
+function changeTextTime3(t) {
+    t.text = "Time: " + time3;
+    return t;
+}
+
 function calculateProcrastination(im, ss, c, e, b, f, st, d, p, i) {
     return ((im + i)**3 * (ss + (b + f)/(c + p)) * d) / (st * e * (c + p/im));
 }
@@ -821,11 +877,174 @@ function taskSliders(canvas, stage) {
 
     function getSliderValue(i) {
         var slider = document.getElementById("inputId"+i);
-        slider.onchange = function() {
-            console.log(this.value/100 + 0.01);
-            return this.value/100 + 0.01;
-        }
+        return slider.value/100 + 0.01;
+    }
+}
+
+function initialCon(s, c) {
+    var messageField = new createjs.Text("Click to start", "bold 24px Sans-serif", "#000000");
+    messageField.maxWidth = 1000;
+    messageField.textAlign = "center";
+    messageField.textBaseline = "middle";
+    messageField.x = c.width / 2;
+    messageField.y = c.height / 2;
+
+    s.addChild(messageField);
+    s.update();
+}
+
+function con0(canvas, stage) {
+    var worker = new createjs.Shape(circle3_0);
+    var work = new createjs.Shape(rect4);
+    var done = 0;
+    var doneText = new createjs.Text("Done: " + done, "20px Arial", "#000000");
+    var waitTime = calculateProcrastination(0.5, 0.5, 1, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5) * 1000;
+
+    worker.x = canvas.width / 2;
+    worker.y = canvas.height / 2;
+
+    work.x = 20;
+    work.y = canvas.height / 2 - 30;
+
+    timeText3.x = 10;
+    timeText3.y = 10;
+
+    doneText.x = 300;
+    doneText.y = 10;
+
+    stage.addChild(worker);
+    stage.addChild(work);
+    stage.addChild(timeText3);
+    stage.addChild(doneText);
+
+    createjs.Tween.get(timeText3, { loop: true })
+        .call(changeTextTime3, [timeText3])
+        .call(incrementTime3)
+        .wait(1000);
+    createjs.Tween.get(worker, { loop: true })
+        .to({ x: 100 }, 1000, createjs.Ease.getPowInOut(3))
+        .to({ x: 300 }, waitTime, createjs.Ease.getPowInOut(3))
+        .to({ x: 200 }, 1000, createjs.Ease.getPowInOut(3));
+    createjs.Tween.get(work, { loop: true })
+        .wait(1000)
+        .to({ x: 340 }, waitTime, createjs.Ease.getPowInOut(3))
+        .to({ x: 340 }, 1000, createjs.Ease.getPowInOut(3))
+        .call(incrementDone)
+        .call(changeTextDone);
+    createjs.Ticker.setFPS(30);
+    createjs.Ticker.addEventListener("tick", stage);
+
+    stage.update();
+
+    function incrementDone() {
+        return done++;
     }
 
-    getSliderValue(0);
+    function changeTextDone() {
+        doneText.text = "Done: " + done;
+        return doneText;
+    }
+}
+
+function con1(canvas, stage) {
+    stage.removeAllChildren();
+    stage.clear();
+
+    var worker = new createjs.Shape(circle3_1);
+    var work = new createjs.Shape(rect4);
+    var timeClone = timeText3.clone();
+    var done = 0;
+    var doneText = new createjs.Text("Done: " + done, "20px Arial", "#000000");
+    var waitTime = calculateProcrastination(0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5) * 1000;
+
+    worker.x = canvas.width / 2;
+    worker.y = canvas.height / 2;
+
+    work.x = 20;
+    work.y = canvas.height / 2 - 30;
+
+    doneText.x = 300;
+    doneText.y = 10;
+
+    stage.addChild(worker);
+    stage.addChild(work);
+    stage.addChild(timeClone);
+    stage.addChild(doneText);
+
+    createjs.Tween.get(timeClone, { loop: true })
+        .wait(1000)
+        .call(changeTextTime3, [timeClone]);
+    createjs.Tween.get(worker, { loop: true })
+        .to({ x: 100 }, 1000, createjs.Ease.getPowInOut(3))
+        .to({ x: 300 }, waitTime, createjs.Ease.getPowInOut(3))
+        .to({ x: 200 }, 1000, createjs.Ease.getPowInOut(3));
+    createjs.Tween.get(work, { loop: true })
+        .wait(1000)
+        .to({ x: 340 }, waitTime, createjs.Ease.getPowInOut(3))
+        .to({ x: 340 }, 1000, createjs.Ease.getPowInOut(3))
+        .call(incrementDone)
+        .call(changeTextDone);
+    createjs.Ticker.setFPS(30);
+    createjs.Ticker.addEventListener("tick", stage);
+
+    stage.update();
+
+    function incrementDone() {
+        return done++;
+    }
+
+    function changeTextDone() {
+        doneText.text = "Done: " + done;
+        return doneText;
+    }
+}
+
+function con2(canvas, stage) {
+    var worker = new createjs.Shape(circle3_2);
+    var work = new createjs.Shape(rect4);
+    var timeClone = timeText3.clone();
+    var done = 0;
+    var doneText = new createjs.Text("Done: " + done, "20px Arial", "#000000");
+    var waitTime = calculateProcrastination(0.5, 0.5, 0.01, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5) * 1000;
+
+    worker.x = canvas.width / 2;
+    worker.y = canvas.height / 2;
+
+    work.x = 20;
+    work.y = canvas.height / 2 - 30;
+
+    doneText.x = 300;
+    doneText.y = 10;
+
+    stage.addChild(worker);
+    stage.addChild(work);
+    stage.addChild(timeClone);
+    stage.addChild(doneText);
+
+    createjs.Tween.get(timeClone, { loop: true })
+        .wait(1000)
+        .call(changeTextTime3, [timeClone]);
+    createjs.Tween.get(worker, { loop: true })
+        .to({ x: 100 }, 1000, createjs.Ease.getPowInOut(3))
+        .to({ x: 300 }, waitTime, createjs.Ease.getPowInOut(3))
+        .to({ x: 200 }, 1000, createjs.Ease.getPowInOut(3))
+    createjs.Tween.get(work, { loop: true })
+        .wait(1000)
+        .to({ x: 340 }, waitTime, createjs.Ease.getPowInOut(3))
+        .to({ x: 340 }, 1000, createjs.Ease.getPowInOut(3))
+        .call(incrementDone)
+        .call(changeTextDone);
+    createjs.Ticker.setFPS(30);
+    createjs.Ticker.addEventListener("tick", stage);
+
+    stage.update();
+
+    function incrementDone() {
+        return done++;
+    }
+
+    function changeTextDone() {
+        doneText.text = "Done: " + done;
+        return doneText;
+    }
 }
