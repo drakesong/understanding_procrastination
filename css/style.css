@@ -37,7 +37,7 @@ p {
     width: 100%;
 }
 
-#chart_parent, .interactive_frust, .interactive_frust_and_pers, .task_slider, .interactive_conscientiousness {
+#chart_parent, .interactive_frust, .interactive_frust_and_pers, .task_slider, .interactive_conscientiousness, .interactive_imp_con, .personality_slider, .tempt_slider, .all_slider {
     text-align: center;
 }
 

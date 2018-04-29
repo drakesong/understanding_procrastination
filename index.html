@@ -170,19 +170,19 @@
         <canvas id="taskCanvas" width="800px" height="400px" style="background:grey;"></canvas>
         <div id="sliders">
             <output name="textName0" id="textId0">Boredom</output>
-            <input type="range" name="inputName0" id="inputId0" value="50" min="1" max="100" oninput="outputId0.value = inputId0.value">
+            <input type="range" name="inputName0" id="inputId0" value="50" min="0" max="100" oninput="outputId0.value = inputId0.value">
             <output name="outputName0" id="outputId0">50</output><br />
             <output name="textName1" id="textId1">Frustration</output>
-            <input type="range" name="inputName1" id="inputId1" value="50" min="1" max="100" oninput="outputId1.value = inputId1.value">
+            <input type="range" name="inputName1" id="inputId1" value="50" min="0" max="100" oninput="outputId1.value = inputId1.value">
             <output name="outputName1" id="outputId1">50</output><br />
             <output name="textName2" id="textId2">Structure</output>
-            <input type="range" name="inputName2" id="inputId2" value="50" min="1" max="100" oninput="outputId2.value = inputId2.value">
+            <input type="range" name="inputName2" id="inputId2" value="50" min="0" max="100" oninput="outputId2.value = inputId2.value">
             <output name="outputName2" id="outputId2">50</output><br />
             <output name="textName3" id="textId3">Delay</output>
-            <input type="range" name="inputName3" id="inputId3" value="50" min="1" max="100" oninput="outputId3.value = inputId3.value">
+            <input type="range" name="inputName3" id="inputId3" value="50" min="0" max="100" oninput="outputId3.value = inputId3.value">
             <output name="outputName3" id="outputId3">50</output><br />
             <output name="textName4" id="textId4">Personal Meaning</output>
-            <input type="range" name="inputName4" id="inputId4" value="50" min="1" max="100" oninput="outputId4.value = inputId4.value">
+            <input type="range" name="inputName4" id="inputId4" value="50" min="0" max="100" oninput="outputId4.value = inputId4.value">
             <output name="outputName4" id="outputId4">50</output><br />
         </div><br />
         <button id="taskButton">Start</button>
@@ -194,6 +194,95 @@
         <canvas id="con0Canvas" width="400px" height="400px" style="background:grey;"></canvas>
         <canvas id="con1Canvas" width="400px" height="400px" style="background:grey;"></canvas>
         <canvas id="con2Canvas" width="400px" height="400px" style="background:grey;"></canvas>
+    </div>
+    <p>
+        Explanation
+    </p>
+    <div class="interactive_imp_con">
+        <canvas id="impConCanvas0" width="400px" height="400px" style="background:grey;"></canvas>
+        <canvas id="impConCanvas1" width="400px" height="400px" style="background:grey;"></canvas>
+        <canvas id="impConCanvas2" width="400px" height="400px" style="background:grey;"></canvas>
+    </div>
+    <p>
+        Explanation
+    </p>
+    <div class="personality_slider">
+        <canvas id="persCanvas" width="800px" height="400px" style="background:grey;"></canvas>
+        <div id="sliders">
+            <output name="textPersName0" id="textPersId0">Impulsiveness</output>
+            <input type="range" name="inputPersName0" id="inputPersId0" value="50" min="0" max="100" oninput="outputPersId0.value = inputPersId0.value">
+            <output name="outputPersName0" id="outputPersId0">50</output><br />
+            <output name="textPersName1" id="textPersId1">Semsation-Seeking</output>
+            <input type="range" name="inputPersName1" id="inputPersId1" value="50" min="0" max="100" oninput="outputPersId1.value = inputPersId1.value">
+            <output name="outputPersName1" id="outputPersId1">50</output><br />
+            <output name="textPersName2" id="textPersId2">Conscientiousness</output>
+            <input type="range" name="inputPersName2" id="inputPersId2" value="50" min="0" max="100" oninput="outputPersId2.value = inputPersId2.value">
+            <output name="outputPersName2" id="outputPersId2">50</output><br />
+            <output name="textPersName3" id="textPersId3">Self-Esteem</output>
+            <input type="range" name="inputPersName3" id="inputPersId3" value="50" min="0" max="100" oninput="outputPersId3.value = inputPersId3.value">
+            <output name="outputPersName3" id="outputPersId3">50</output><br />
+        </div><br />
+        <button id="persButton">Start</button>
+    </div>
+    <p>
+        Explanation
+    </p>
+    <div class="tempt_slider">
+        <canvas id="temptCanvas" width="800px" height="400px" style="background:grey;"></canvas>
+        <div id="sliders">
+            <output name="textTemptName0" id="textTemptId0">Intensity</output>
+            <input type="range" name="inputTemptName0" id="inputTemptId0" value="50" min="0" max="100" oninput="outputTemptId0.value = inputTemptId0.value">
+            <output name="outputTemptName0" id="outputTemptId0">50</output><br />
+        </div><br />
+        <button id="temptButton">Start</button>
+    </div>
+    <p>
+        Explanation
+    </p>
+    <div class="all_slider">
+        <canvas id="allCanvas" width="800px" height="400px" style="background:grey;"></canvas>
+        <div id="sliders">
+            <output name="textAllName0" id="textAllId0">Impulsiveness</output>
+            <input type="range" name="inputAllName0" id="inputAllId0" value="50" min="0" max="100" oninput="outputAllId0.value = inputAllId0.value">
+            <output name="outputAllName0" id="outputAllId0">50</output><br />
+
+            <output name="textAllName1" id="textAllId1">Sensation-Seeking</output>
+            <input type="range" name="inputAllName1" id="inputAllId1" value="50" min="0" max="100" oninput="outputAllId1.value = inputAllId1.value">
+            <output name="outputAllName1" id="outputAllId1">50</output><br />
+
+            <output name="textAllName2" id="textAllId2">Conscientiousness</output>
+            <input type="range" name="inputAllName2" id="inputAllId2" value="50" min="0" max="100" oninput="outputAllId2.value = inputAllId2.value">
+            <output name="outputAllName2" id="outputAllId2">50</output><br />
+
+            <output name="textAllName3" id="textAllId3">Self-Esteem</output>
+            <input type="range" name="inputAllName3" id="inputAllId3" value="50" min="0" max="100" oninput="outputAllId3.value = inputAllId3.value">
+            <output name="outputAllName3" id="outputAllId3">50</output><br />
+
+            <output name="textAllName4" id="textAllId4">Boredom</output>
+            <input type="range" name="inputAllName4" id="inputAllId4" value="50" min="0" max="100" oninput="outputAllId4.value = inputAllId4.value">
+            <output name="outputAllName4" id="outputAllId4">50</output><br />
+
+            <output name="textAllName5" id="textAllId5">Frustration</output>
+            <input type="range" name="inputAllName5" id="inputAllId5" value="50" min="0" max="100" oninput="outputAllId5.value = inputAllId5.value">
+            <output name="outputAllName5" id="outputAllId5">50</output><br />
+
+            <output name="textAllName6" id="textAllId6">Structure</output>
+            <input type="range" name="inputAllName6" id="inputAllId6" value="50" min="0" max="100" oninput="outputAllId6.value = inputAllId6.value">
+            <output name="outputAllName6" id="outputAllId6">50</output><br />
+
+            <output name="textAllName7" id="textAllId7">Delay</output>
+            <input type="range" name="inputAllName7" id="inputAllId7" value="50" min="0" max="100" oninput="outputAllId7.value = inputAllId7.value">
+            <output name="outputAllName7" id="outputAllId7">50</output><br />
+
+            <output name="textAllName8" id="textAllId8">Personal Meaning</output>
+            <input type="range" name="inputAllName8" id="inputAllId8" value="50" min="0" max="100" oninput="outputAllId8.value = inputAllId8.value">
+            <output name="outputAllName8" id="outputAllId8">50</output><br />
+
+            <output name="textAllName9" id="textAllId9">Intensity</output>
+            <input type="range" name="inputAllName9" id="inputAllId9" value="50" min="0" max="100" oninput="outputAllId9.value = inputAllId9.value">
+            <output name="outputAllName9" id="outputAllId9">50</output><br />
+        </div><br />
+        <button id="allButton">Start</button>
     </div>
     <p>
         <ul>
