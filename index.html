@@ -175,7 +175,21 @@
         <canvas id="frpe2Canvas" width="400px" height="400px" style="background:grey;"></canvas>
     </div>
     <p>
-        Explanation
+        Compared to the figure above, it is clear to see that Joe completes the task that is both not frustrating and has high personal meaning versus the task that is only not frustrating. The other extreme is also true; the task that is both very frustrating and has no personal meaning takes a longer time to complete compared to the task that is only very frustrating. With this, we can clearly see that there are many factors that are playing a role in determining the type of task that is at hand.<br /><br />
+        We will now go over all of the other factors that play a role in procrastination.
+    </p>
+    <h3>Boredom</h3>
+    <p>
+        Similar to frustration, the more boring the task is, the more likely the person is going to deviate towards a task that is less boring. Boring tasks also tend to cause drowsiness and sleepiness which impairs one's ability to work by a great deal.
+    </p>
+    <h3>Structure</h3>
+    <p>
+        Structure of the task means how well the task is organized and work through. When a task is less structured and difficult to coordinate, there is more procrastination. This is due to the fact that when one works through a task, there are many points during the process when the person has to make a decision about what to do next and what the next steps are to complete the task. If a task is clearly structured, it is easy for the person to decide what the next steps are and complete the task. On the other hand, if the task is not clearly organized, the indecision between the steps creates more chances for the person to procrastinate.
+    </p>
+    <h3>Delay</h3>
+    <p>
+        Delay represents the deadline of the task. Tasks that are due further away in time have lower priorities for people. This is related to the temporal discounting theory: people discount rewards taht are further away. The higher the delay, the more procrastination there is. Delay is a dangerous factor in that there are tasks that have no deadlines. For example, many people for their new year's resolution decide to go on a diet by eating less and going out to the gym more. This is a task that has no deadline; it is a personal task that won't be completed until the person is satisified with the progress. When a task has no deadline, procrastination is very difficult to determine since the mathematically doesn't work out anymore (the variable representing delay becomes infinity). It is purely up to the person to motivate oneself to complete the task.<br /><br />
+        Now that we've seen the factors that affect the type of task at hand, you can use the interactive below to see how much of an impact each factor has.
     </p>
     <div class="task_slider">
         <canvas id="taskCanvas" width="800px" height="400px" style="background:grey;"></canvas>
@@ -198,16 +212,24 @@
         </div><br />
         <button id="taskButton">Start</button>
     </div>
+    <h1>Personality</h1>
     <p>
-        Explanation
+        The task is not the only thing that affects procrastination, however. The more important factor is the personality of the person. No matter how structured and how easy the task is, if the person is literally a sloth, the task is not going to get done anytime soon. Let's start exploring what kind of personality traits play a role in procrastination.
+    </p>
+    <h3>Conscientiousness</h3>
+    <p>
+        A conscientious person is who wishes to what is right, especially to do one's work or duty well and thoroughly. One of the elements of conscientiousness is organization and this results in good coping strategies such as goal setting and automatic habits. Achievement motivation, enjoying performance for the sake of performance, is also an iporant aspect of conscientiousness. High conscientiousness results in less procrastination.<br /><br />
+        Below is a figure that shows three different types of people: very conscientious (left), average (center), not conscientious (right). Numerical values that is used to represent procrastination is also displayed. The model will be presented later in the paper but the numbers for now should be helpful when comparing procrastination.
     </p>
     <div class="interactive_conscientiousness">
         <canvas id="con0Canvas" width="400px" height="400px" style="background:grey;"></canvas>
         <canvas id="con1Canvas" width="400px" height="400px" style="background:grey;"></canvas>
         <canvas id="con2Canvas" width="400px" height="400px" style="background:grey;"></canvas>
     </div>
+    <h3>Impulsiveness</h3>
     <p>
-        Explanation
+        As seen with the type of tasks, there are multiple personality traits that play a role in procrastination. Another personality factor that we'll see is impulsiveness. Impulsive people are more likely to act on the desire of the moment. When some distractions come along that are more interesting than what they should be doing, they are likely to switch to the more interesting activitiy. This leads to procrastination.<br /><br />
+        Below there are three workers: very conscientious + low impulsiveness (left), average conscientious + average impulsiveness (center), low conscientious + high impulsiveness (right).
     </p>
     <div class="interactive_imp_con">
         <canvas id="impConCanvas0" width="400px" height="400px" style="background:grey;"></canvas>
@@ -215,7 +237,16 @@
         <canvas id="impConCanvas2" width="400px" height="400px" style="background:grey;"></canvas>
     </div>
     <p>
-        Explanation
+        The left and the right are very unlikely scenarios as you can see how fast the person completes the task on the left and how slow the person takes on the right. This is due the fact that compared to the extreme cases for tasks, personality traits play a bigger role in determining the procrastination.
+    </p>
+    <h3>Sensation-Seeking</h3>
+    <p>
+        This is the tendency to find exciting activities, take risks and avoid boredom. The higher someone scores on this, the higher the procrastination.
+    </p>
+    <h3>Self-Esteem</h3>
+    <p>
+        This is how one evaluates oneself. A low self-evaluation correlates with automatic thoughts about oneself and procrastinatory cognitions, which leads to more procrastination.<br /><br />
+        Here are all of the personality factors that you can play with to see the affects. Compared to factors relating to tasks, personality factors will play a bigger role in procrastination.
     </p>
     <div class="personality_slider">
         <canvas id="persCanvas" width="800px" height="400px" style="background:grey;"></canvas>
@@ -223,7 +254,7 @@
             <output name="textPersName0" id="textPersId0">Impulsiveness</output>
             <input type="range" name="inputPersName0" id="inputPersId0" value="50" min="0" max="100" oninput="outputPersId0.value = inputPersId0.value">
             <output name="outputPersName0" id="outputPersId0">50</output><br />
-            <output name="textPersName1" id="textPersId1">Semsation-Seeking</output>
+            <output name="textPersName1" id="textPersId1">Sensation-Seeking</output>
             <input type="range" name="inputPersName1" id="inputPersId1" value="50" min="0" max="100" oninput="outputPersId1.value = inputPersId1.value">
             <output name="outputPersName1" id="outputPersId1">50</output><br />
             <output name="textPersName2" id="textPersId2">Conscientiousness</output>
@@ -235,8 +266,13 @@
         </div><br />
         <button id="persButton">Start</button>
     </div>
+    <h1>Temptations</h1>
     <p>
-        Explanation
+        The last category of factors that affect procrastination is temptations. If there are no temptations (i.e. distractions) during the process of completing the task, then procrastination is likely to be low because there are less chances of distracting oneself.
+    </p>
+    <h3>Intensity</h3>
+    <p>
+        THe intensity of temptations can be related to the number of temptations and the difficulty of rejecting the temptations. The higher the intensity, the more likely the person is to procrastinate.
     </p>
     <div class="tempt_slider">
         <canvas id="temptCanvas" width="800px" height="400px" style="background:grey;"></canvas>
@@ -247,8 +283,9 @@
         </div><br />
         <button id="temptButton">Start</button>
     </div>
+    <h1>Everything</h1>
     <p>
-        Explanation
+        Now that we've been introduced to all of the factors that affect procrastination. Here is everything put together so you can see the relatinoship yourself.
     </p>
     <div class="all_slider">
         <canvas id="allCanvas" width="800px" height="400px" style="background:grey;"></canvas>
@@ -295,42 +332,21 @@
         </div><br />
         <button id="allButton">Start</button>
     </div>
-    <p>
-        <ul>
-            <li>
-                Personality
-                <ul>
-                    <li>Impulsiveness (+)</li>
-                    <li>Conscientiousness (-)</li>
-                    <li>Self-Esteem (-)</li>
-                    <li>Sensation-Seeking (+)</li>
-                </ul>
-            </li>
-            <li>
-                Task
-                <ul>
-                    <li>Boredom (+)</li>
-                    <li>Frustration (+)</li>
-                    <li>Structure (-)</li>
-                    <li>Delay (+)</li>
-                    <li>Personal Meaning (-)</li>
-                </ul>
-            </li>
-            <li>
-                Temptation
-                <ul>
-                    <li>Temptation (+)</li>
-                    <li>Number (+)</li>
-                </ul>
-            </li>
-        </ul>
-    </p>
     <h1>Model</h1>
     <p>
-        $$Procrastination = {(Im + In)(Ss + \frac{B+F}{C+P}) \cdot D \cdot N) \over St \cdot E \cdot (C + \frac{P}{Im})}.$$
+        $$Procrastination = {(Im + In)^{3} \cdot (Ss + \frac{B+F}{C+P}) \cdot D \over St \cdot E \cdot (C + \frac{P}{Im})}$$
     </p>
-    <h1>Interactions</h1>
     <p>
-        Here the interactions will include sliders which the user can adjust to see the impact of a personality trait or the differing tasks on procrastination. The last interaction will be a sandbox where the user can play with all the factors.
+        I created this model so take it with a grain of salt but I did try to recreate the relationship between the factors. There are numerous factors that affect each other. For example, impulsiveness (personality) and intensity (temptations) go hand in hand in a way that if an impulsive person is met with high intensity temptations, the level of procrastination is going to increase tremendously.
+    </p>
+    <h1>Conclusion</h1>
+    <h3>Additional Information</h3>
+    <p>
+        There are many other factors that play into procrastination. For example, mood also plays a big role in procrastination. There are other factors such as fear of failure, self-efficacy, ego-resource, and others that are too complicated to be discussed and be considered for the mathematical model that I came up with. Because procrastination is something that differs with everyone, it is an idea that cannot be put into a single mathematical model. The model I came up with is a simplified version of studies going on about procrastination that was hopefully able to give you some insight into some factors that play into procrastination.
+    </p>
+    <h3>Closing Remarks</h3>
+    <p>
+        Now that we know how procrastination works on the most basic form, how do we counter procrastination from happening? This is a question that researchers are trying to answer. An answer that people usually say is that learning how to delay instant gratification will help with not procrastinating. But how do we do that? How do we stop ourselves from eating the marshmallow that is right in front of us? Well the first step of solving the problem is recognizing the fact that you have a problem. If you've been reading this article and have agreed on some aspects of the discussion, then it's clear that you suffer from procrastination here and there. Recognizing which factors are affecting you while procrastinating is the next big step. While I was writing this article, I realized that the task of writing this article was very frustrating and lacked structure. By recognizing some of the problems of this task at hand, I tried to counter them by re-outlining the article so that it's easier to make progress and splitting up the work into easily doable tasks helped in finishing the article.<br /><br />
+        Procrastination is something that everyone has to deal with. Whether or not you are a chronic procrastinator or just an occasional procrastinator, recognizing the factors that are currently causing you to procrastinate and coming up with plans to counter those factors will help you procrastinate less.
     </p>
 </body>
